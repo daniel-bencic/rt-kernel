@@ -14,9 +14,9 @@ checksum = "cf1de2fe8c75bc145a2f577add951f8134889b4795d47466a54a5c846d691693"
 
 [[package]]
 name = "bootloader"
-version = "0.8.9"
+version = "0.9.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "152a28c753e229e037e910b4cd4cd16a90c53dd9a67fd751fa304b4b4a03970c"
+checksum = "56452f4da420d25cf4bbf5b8fdc1529a8bde79a081f2619ce7ebc6d581117261"
 
 [[package]]
 name = "cpuio"
@@ -31,6 +31,24 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "e2abad23fbc42b3700f2f279844dc832adb2b2eb069b2df918f455c4e18cc646"
 dependencies = [
  "spin",
+]
+
+[[package]]
+name = "linked_list_allocator"
+version = "0.8.4"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "e70e46c13c0e8374c26cec5752e3347ca1087d9711de8f45aa513a7700efd73d"
+dependencies = [
+ "spinning_top",
+]
+
+[[package]]
+name = "lock_api"
+version = "0.3.4"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "c4da24a77a3d8a6d4862d95f72e6fdb9c09a643ecdb402d754004a557f2bec75"
+dependencies = [
+ "scopeguard",
 ]
 
 [[package]]
@@ -54,13 +72,20 @@ version = "0.1.0"
 dependencies = [
  "bootloader",
  "lazy_static",
+ "linked_list_allocator",
  "pc-keyboard",
  "pic8259_simple",
  "spin",
  "uart_16550",
  "volatile",
- "x86_64 0.9.6",
+ "x86_64",
 ]
+
+[[package]]
+name = "scopeguard"
+version = "1.1.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "d29ab0c6d3fc0ee92fe66e2d99f700eab17a8d57d1c1d3b748380fb20baa78cd"
 
 [[package]]
 name = "spin"
@@ -69,13 +94,22 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "6e63cff320ae2c57904679ba7cb63280a3dc4613885beafb148ee7bf9aa9042d"
 
 [[package]]
+name = "spinning_top"
+version = "0.1.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "32d801a3a53bcf5071f85fef8d5cab9e5f638fc5580a37e6eb7aba4b37438d24"
+dependencies = [
+ "lock_api",
+]
+
+[[package]]
 name = "uart_16550"
 version = "0.2.7"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "e58fc40dc1712664fc9b0a7bd8ca2f21ab49960924fb245a80a05e1e92f3dfe9"
 dependencies = [
  "bitflags",
- "x86_64 0.11.0",
+ "x86_64",
 ]
 
 [[package]]
@@ -83,16 +117,6 @@ name = "volatile"
 version = "0.2.6"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "6af0edf5b4faacc31fc51159244d78d65ec580f021afcef7bd53c04aeabc7f29"
-
-[[package]]
-name = "x86_64"
-version = "0.9.6"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "4206b60c9f99766329b66962aa8ddc01df6c7edd02edc046b7a69d5df9fcdbcf"
-dependencies = [
- "bit_field",
- "bitflags",
-]
 
 [[package]]
 name = "x86_64"
